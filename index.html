@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>rock paper scissors</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <script>
+    // randomly return 'Rock', 'Paper', or 'Scissors'
+    function computerPlay(){
+      const result = Math.floor(Math.random() * 3); // returns either 0, 1, or 2
+      switch (result) {
+        case 0: return 'Rock';
+        case 1: return 'Paper';
+        case 2: return 'Scissors';
+      }
+    }
+  </script>
+</body>
+</html>
