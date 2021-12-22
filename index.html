@@ -15,7 +15,7 @@
         case 2: return 'scissors';
       }
     }
-
+    
     function playRound(playerSelection, computerSelection) {
       playerSelection = playerSelection.toLowerCase();
       let r = 'rock';
@@ -27,7 +27,6 @@
 
       // if both selections are the same, return tie message string
       if (playerSelection === computerSelection) {
-        // return `It's a Tie! Both chose ${playerSelection}.`;
         return [null, `It's a Tie! Both chose ${playerSelection}.`];
       }
 
@@ -36,20 +35,18 @@
         case (playerSelection === p && computerSelection === r) || 
         (playerSelection === r && computerSelection === p):
           result = (playerSelection === p) ? 'Win' : 'Lose';
-          // return `You ${result}!, Paper beats Rock.`;
           return [playerSelection === p, `You ${result}!, Paper beats Rock.`];
         // case for scissors vs paper
         case (playerSelection === s && computerSelection === p) || 
         (playerSelection === p && computerSelection === s):
           result = (playerSelection === s) ? 'Win' : 'Lose';
-          // return `You ${result}!, Scissors beats Paper.`;
           return [playerSelection === s, `You ${result}!, Scissors beats Paper.`];
         // case for rock vs scissors
         case (playerSelection === r && computerSelection === s) || 
         (playerSelection === s && computerSelection === r):
           result = (playerSelection === r) ? 'Win' : 'Lose';
-          // return `You ${result}!, Rock beats Scissors.`;
           return [playerSelection === r, `You ${result}!, Rock beats Scissors.`];
+        //case for other inputted string in prompt
         default:
           return [undefined, ''];
       }
