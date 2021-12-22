@@ -27,7 +27,8 @@
 
       // if both selections are the same, return tie message string
       if (playerSelection === computerSelection) {
-        return `It's a Tie! Both chose ${playerSelection}.`;
+        // return `It's a Tie! Both chose ${playerSelection}.`;
+        return [null, `It's a Tie! Both chose ${playerSelection}.`];
       }
 
       switch (true) {
@@ -35,27 +36,56 @@
         case (playerSelection === p && computerSelection === r) || 
         (playerSelection === r && computerSelection === p):
           result = (playerSelection === p) ? 'Win' : 'Lose';
-          return `You ${result}!, Paper beats Rock.`;
+          // return `You ${result}!, Paper beats Rock.`;
+          return [playerSelection === p, `You ${result}!, Paper beats Rock.`];
         // case for scissors vs paper
         case (playerSelection === s && computerSelection === p) || 
         (playerSelection === p && computerSelection === s):
           result = (playerSelection === s) ? 'Win' : 'Lose';
-          return `You ${result}!, Scissors beats Paper.`;
+          // return `You ${result}!, Scissors beats Paper.`;
+          return [playerSelection === s, `You ${result}!, Scissors beats Paper.`];
         // case for rock vs scissors
         case (playerSelection === r && computerSelection === s) || 
         (playerSelection === s && computerSelection === r):
           result = (playerSelection === r) ? 'Win' : 'Lose';
-          return `You ${result}!, Rock beats Scissors.`;
+          // return `You ${result}!, Rock beats Scissors.`;
+          return [playerSelection === r, `You ${result}!, Rock beats Scissors.`];
+        default:
+          return [undefined, ''];
       }
     }
 
-    function game() {
+    function game(rounds) {
       let playerSelection;
-      for (i = 1; i <= 5; i++) {
+      let roundResult;
+      let playerScore = 0;
+      let computerScore = 0;
+      let i = 1;
+
+      while (i <= 5) {
         playerSelection = window.prompt(`ROUND ${i}: Rock, Paper, or Scissors?`);
-        console.log(playRound(playerSelection, computerPlay()));
+        roundResult = playRound(playerSelection, computerPlay());
+        switch (roundResult[0]) {
+          case true:
+            playerScore++;
+            i++
+            console.log(roundResult[1]);
+            break;
+          case false:
+            computerScore++;
+            i++
+            console.log(roundResult[1]);
+            break;
+          case null:
+            console.log(roundResult[1]);
+        }
+        console.log(`SCORE: ${playerScore} : ${computerScore}`);
+        console.log('------------------------------------------------')
       }
+      return playerScore > computerScore ? 'You won the game!' : 'You lost the game!';
     }
+
+    console.log(game(5));
 
   </script>
 </body>
