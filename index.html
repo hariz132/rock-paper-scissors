@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
 </head>
 <body>
+  <button id='rock'>rock</button>
+  <button id='paper'>paper</button>
+  <button id='scissors'>scissors</button>
+  <div id='result'></div>
   <script>
     // randomly return 'Rock', 'Paper', or 'Scissors'
     function computerPlay(){
@@ -82,7 +86,17 @@
       return playerScore > computerScore ? 'You won the game!' : 'You lost the game!';
     }
 
-    console.log(game(5));
+    // console.log(game(5));
+
+    const btnRock = document.querySelector('#rock');
+    const btnPaper = document.querySelector('#paper');
+    const btnScissors = document.querySelector('#scissors');
+    const divResult = document.querySelector('#result')
+
+    btnRock.addEventListener('click', () => console.log(playRound('rock', computerPlay())));
+    btnPaper.addEventListener('click', () => console.log(playRound('paper', computerPlay())));
+    btnScissors.addEventListener('click', () => console.log(playRound('scissors', computerPlay())));
+    
 
   </script>
 </body>
