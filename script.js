@@ -37,23 +37,23 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.buttons img');
 const resultBoard = document.querySelector('#result');
 const playerScoreBoard = document.querySelector('#playerScoreBoard');
 const computerScoreBoard = document.querySelector('#computerScoreBoard');
 
-buttons.forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    const roundResult = playRound(e.target.id, computerPlay());
-    resultBoard.textContent = roundResult[1];
-    if (roundResult[0] !== null) {
-      updateGameScore(roundResult[0]);
-    }
-    if(playerScore === 5 || computerScore === 5) {
-      setGameOver();
-    }
-  });
-});
+buttons.forEach(btn => btn.addEventListener('click', buttonClick));
+
+function buttonClick(e) {
+  const roundResult = playRound(e.target.id, computerPlay());
+  resultBoard.textContent = roundResult[1];
+  if (roundResult[0] !== null) {
+    updateGameScore(roundResult[0]);
+  }
+  if(playerScore === 5 || computerScore === 5) {
+    setGameOver();
+  }
+}
 
 let playerScore = 0;
 let computerScore = 0;
@@ -78,7 +78,7 @@ function displayWinner() {
 
 function setGameOver(){
   displayWinner();
-  buttons.forEach(btn => btn.disabled = true);
+  buttons.forEach(btn => btn.removeEventListener('click', buttonClick));
   resetButton = document.createElement('button');
   resetButton.textContent = 'Start new game';
   resultBoard.parentNode.appendChild(resetButton);
@@ -91,7 +91,7 @@ function resetGame() {
   playerScoreBoard.textContent = 0;
   computerScoreBoard.textContent = 0;
   resultBoard.textContent = '';
-  buttons.forEach(btn => btn.disabled = false);
+  buttons.forEach(btn => btn.addEventListener('click', buttonClick));
   gameOverBoard.parentNode.removeChild(gameOverBoard);
   resetButton.parentNode.removeChild(resetButton);
 }

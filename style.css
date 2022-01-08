@@ -21,6 +21,7 @@
 .buttons {
   display: flex;
   justify-content: center;
+  gap: 30px;
   margin: 50px 0;
 }
 
@@ -31,4 +32,15 @@
 
 .resultcontainer > * {
   text-align: center;
+}
+
+.buttons img {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.buttons img:hover {
+  box-shadow: 2px 4px 16px black;
 }
