@@ -42,6 +42,11 @@ const resultBoard = document.querySelector('#result');
 const playerScoreBoard = document.querySelector('#playerScoreBoard');
 const computerScoreBoard = document.querySelector('#computerScoreBoard');
 
+let playerScore = 0;
+let computerScore = 0;
+let resetButton;
+let gameOverBoard;
+
 buttons.forEach(btn => btn.addEventListener('click', buttonClick));
 
 function buttonClick(e) {
@@ -54,11 +59,6 @@ function buttonClick(e) {
     setGameOver();
   }
 }
-
-let playerScore = 0;
-let computerScore = 0;
-let resetButton;
-let gameOverBoard;
 
 function updateGameScore(roundResult) {
   roundResult ? playerScore++ : computerScore++;
@@ -78,11 +78,15 @@ function displayWinner() {
 
 function setGameOver(){
   displayWinner();
-  buttons.forEach(btn => btn.removeEventListener('click', buttonClick));
+  buttons.forEach(btn => {
+    btn.removeEventListener('click', buttonClick);
+    btn.classList.remove('hoverbtn');
+  });
   resetButton = document.createElement('button');
   resetButton.textContent = 'Start new game';
   resultBoard.parentNode.appendChild(resetButton);
   resetButton.addEventListener('click', resetGame);
+  resetButton.focus();
 }
 
 function resetGame() {
@@ -91,7 +95,10 @@ function resetGame() {
   playerScoreBoard.textContent = 0;
   computerScoreBoard.textContent = 0;
   resultBoard.textContent = '';
-  buttons.forEach(btn => btn.addEventListener('click', buttonClick));
+  buttons.forEach(btn => {
+    btn.addEventListener('click', buttonClick);
+    btn.classList.add('hoverbtn');
+  });
   gameOverBoard.parentNode.removeChild(gameOverBoard);
   resetButton.parentNode.removeChild(resetButton);
 }

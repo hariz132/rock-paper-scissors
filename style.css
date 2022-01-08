@@ -41,6 +41,6 @@
   border-radius: 10px;
 }
 
-.buttons img:hover {
+.hoverbtn:hover {
   box-shadow: 2px 4px 16px black;
 }
