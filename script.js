@@ -57,11 +57,32 @@ function buttonClick(e) {
   displayChoices(e.target.id, computerChoice);
   const roundResult = playRound(e.target.id, computerChoice);
   resultBoard.textContent = roundResult[1];
+  highlightWinningLosingChoice(roundResult[0]);
   if (roundResult[0] !== null) {
     updateGameScore(roundResult[0]);
   }
   if(playerScore === 5 || computerScore === 5) {
     setGameOver();
+  }
+}
+
+function highlightWinningLosingChoice(isPlayerWin) {
+  // clear current highlights:
+  playerChoiceDisplay.classList.remove('winhighlight', 'losehighlight', 'tiehighlight');
+  computerChoiceDisplay.classList.remove('winhighlight', 'losehighlight', 'tiehighlight');
+  
+  switch (isPlayerWin) {
+    case true:
+      playerChoiceDisplay.classList.add('winhighlight');
+      computerChoiceDisplay.classList.add('losehighlight');    
+      break;
+    case false:
+      playerChoiceDisplay.classList.add('losehighlight');
+      computerChoiceDisplay.classList.add('winhighlight');    
+      break;
+    case null:
+      playerChoiceDisplay.classList.add('tiehighlight');
+      computerChoiceDisplay.classList.add('tiehighlight');
   }
 }
 
@@ -105,4 +126,6 @@ function resetGame() {
   gameOverBoard.parentNode.removeChild(gameOverBoard);
   resetButton.parentNode.removeChild(resetButton);
   displayChoices('question-mark', 'question-mark');
+  playerChoiceDisplay.classList.remove('winhighlight', 'losehighlight', 'tiehighlight');
+  computerChoiceDisplay.classList.remove('winhighlight', 'losehighlight', 'tiehighlight');
 }
