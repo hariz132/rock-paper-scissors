@@ -15,25 +15,25 @@ function playRound(playerSelection, computerSelection) {
   let result;
 
   if (playerSelection === computerSelection) {
-    return [null, `It's a Tie! Both chose ${playerSelection}.`];
+    return [null, `Tie! Both chose ${playerSelection}.`];
   }
 
   switch (true) {
     // case for paper vs rock
     case (playerSelection === p && computerSelection === r) || 
     (playerSelection === r && computerSelection === p):
-      result = (playerSelection === p) ? 'Win' : 'Lose';
-      return [playerSelection === p, `You ${result}!, Paper beats Rock.`];
+      result = (playerSelection === p) ? 'win' : 'lose';
+      return [playerSelection === p, `You ${result}! paper beats rock.`];
     // case for scissors vs paper
     case (playerSelection === s && computerSelection === p) || 
     (playerSelection === p && computerSelection === s):
-      result = (playerSelection === s) ? 'Win' : 'Lose';
-      return [playerSelection === s, `You ${result}!, Scissors beats Paper.`];
+      result = (playerSelection === s) ? 'win' : 'lose';
+      return [playerSelection === s, `You ${result}! scissors beats paper.`];
     // case for rock vs scissors
     case (playerSelection === r && computerSelection === s) || 
     (playerSelection === s && computerSelection === r):
-      result = (playerSelection === r) ? 'Win' : 'Lose';
-      return [playerSelection === r, `You ${result}!, Rock beats Scissors.`];
+      result = (playerSelection === r) ? 'win' : 'lose';
+      return [playerSelection === r, `You ${result}! rock beats scissors.`];
   }
 }
 
@@ -100,8 +100,10 @@ function updateGameScore(roundResult) {
 function displayWinner() {
   gameOverBoard = document.createElement('div');
   if (playerScore > computerScore) {
+    gameOverBoard.classList.add('gameoverResultWin');
     gameOverBoard.textContent = 'You won the game!';
   } else {
+    gameOverBoard.classList.add('gameoverResultLose');
     gameOverBoard.textContent = 'You lost the game!';
   }
   resultBoard.parentNode.appendChild(gameOverBoard);

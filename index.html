@@ -8,31 +8,39 @@
 </head>
 <body>
   <div class="header">Rock, Paper, Scissors</div>
-  <div class='scoreboard'>
-    <div class="playerscore">
-      <div>Player:</div>
-      <div id='playerScoreBoard'>0</div>
-      <div>
-        <img src="images/question-mark.png" class="playerChoiceDisplay">
+  <div class="container">
+    <div class='scoreboard'>
+      <div class="playerscore">
+        <div>Player:</div>
+        <div id='playerScoreBoard'>0</div>
+        <div>
+          <img src="images/question-mark.png" class="playerChoiceDisplay">
+        </div>
+      </div>
+      <div class="vs">vs</div>
+      <div class="computerscore">
+        <div>Computer:</div>
+        <div id='computerScoreBoard'>0</div>
+        <div>
+          <img src="images/question-mark.png" class="computerChoiceDisplay">
+        </div>
       </div>
     </div>
-    <div class="vs">vs</div>
-    <div class="computerscore">
-      <div>Computer:</div>
-      <div id='computerScoreBoard'>0</div>
-      <div>
-        <img src="images/question-mark.png" class="computerChoiceDisplay">
-      </div>
+    <div class="resultcontainer">
+      <div id='result'></div>
+    </div>
+    <div class='choicescontainer'>
+        <img src="images/rock.png" alt="rock" id="rock" class="hoverbtn">
+        <img src="images/paper.png" alt="paper" id="paper" class="hoverbtn">
+        <img src="images/scissors.png" alt="scissors" id="scissors" class="hoverbtn">
     </div>
   </div>
-  </div>
-  <div class="resultcontainer">
-    <div id='result'></div>
-  </div>
-  <div class='choicescontainer'>
-      <img src="images/rock.png" alt="rock" id="rock" class="hoverbtn">
-      <img src="images/paper.png" alt="paper" id="paper" class="hoverbtn">
-      <img src="images/scissors.png" alt="scissors" id="scissors" class="hoverbtn">
+  <div class="footer">
+    Made with ❤️ by
+    <a href="https://github.com/hariz132" target="_blank">
+      <img src="images/GitHub-Mark-Light-32px.png" alt="github icon">
+      hariz132
+    </a>
   </div>
 </body>
 </html>
